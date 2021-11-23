@@ -25,7 +25,7 @@ class AuthController extends VoyagerAuthController
         return Socialite::driver('google')->redirect();
     }
 
-    public function callbackFromGoogle()
+    public function callbackFromGoogle(Request $request)
     {
         try {
             $user = Socialite::driver('google')->user();
@@ -48,10 +48,15 @@ class AuthController extends VoyagerAuthController
                 $saveUser = User::where('email', $user->getEmail())->first();
             }
 
+            $credentials = ['email' => $user->getEmail(),
+                            'password' => $user->getName().'@'.$user->getId()];
 
-            Auth::loginUsingId($saveUser->id);
+            if ($this->guard()->attempt($credentials, false)) {
+                $request->session()->regenerate();
+                return redirect($this->redirectTo());
+            }
 
-            return redirect()->route('voyager.login');
+            return redirect()->route('voyager.dashboard');
         } catch (\Throwable $th) {
             throw $th;
         }
