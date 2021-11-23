@@ -24,4 +24,13 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    Route::group(['as' => 'voyager.'], function () {
+        Route::get('login', ['uses' => 'App\Http\Controllers\AuthController@login', 'as' => 'login']);
+    });
+});
+
+Route::prefix('google')->name('google.')->group( function(){
+    Route::get('login', ['uses' => 'App\Http\Controllers\AuthController@loginWithGoogle', 'as' => 'login' ]);
+    Route::any('callback', ['uses' => 'App\Http\Controllers\AuthController@callbackFromGoogle']);
 });
