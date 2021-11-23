@@ -1,8 +1,6 @@
 @extends('voyager::auth.master')
 
 @section('content')
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
     <div class="login-container">
 
         <p>{{ __('voyager::login.signin_below') }}</p>
@@ -36,12 +34,11 @@
                         <span class="signin">{{ __('voyager::generic.login') }}</span>
                     </button>
                 </div>
-                
+
                 <div class="col-md-8">
-                    <button class="btn btn-block btn-primary">
-                        <a href="{{ route('google.login') }}"></a>
+                    <a href="{{ route('google.login') }}" class="btn btn-block btn-primary">
                         <span class="signin">Login with Google</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </form>
