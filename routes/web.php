@@ -20,3 +20,8 @@ Route::get('/', function () {
         'users' => $users
     ]);
 });
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
