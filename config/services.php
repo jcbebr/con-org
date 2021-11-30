@@ -31,11 +31,9 @@ return [
     ],
 
     'google' => [
-        //'client_id' => env('GOOGLE_AUTH_CLIENT_ID'),
-        'client_id' => '481189880994-godi4q78t8lg2ktu4j916ea4evqs1ou7.apps.googleusercontent.com',
-        //'client_secret' => env('GOOGLE_AUTH_CLIENT_SECRET'),
-        'client_secret' => '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',
-        'redirect' => env('GOOGLE_AUTH_CALL_BACK', 'http://localhost/google/callback'),
+        'client_id' => env('GOOGLE_AUTH_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_AUTH_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_AUTH_CALL_BACK'),
     ],
 
 ];
