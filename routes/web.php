@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,15 +13,7 @@ use App\Models\User;
 |
 */
 
-Route::get('/', function () {
-    $users = User::paginate(10);
-    return view('welcome')->with([
-        'users' => $users
-    ]);
-});
-
-
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => '/'], function () {
     Voyager::routes();
 
     Route::group(['as' => 'voyager.'], function () {
@@ -34,3 +25,6 @@ Route::prefix('google')->name('google.')->group( function(){
     Route::get('login', ['uses' => 'App\Http\Controllers\AuthController@loginWithGoogle', 'as' => 'login' ]);
     Route::any('callback', ['uses' => 'App\Http\Controllers\AuthController@callbackFromGoogle']);
 });
+
+
+Route::get('painel', ['uses' => 'App\Http\Controllers\PainelController@index', 'as' => 'index']);
