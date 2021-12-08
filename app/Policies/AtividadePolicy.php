@@ -2,7 +2,6 @@
 
 namespace App\Policies;
 
-use App\Models\Atividade;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Contracts\User;
 use TCG\Voyager\Policies\BasePolicy;
@@ -18,7 +17,7 @@ class AtividadePolicy extends BasePolicy
      *
      * @return bool
      */
-    private function pertenceAoUsuaio(User $user, Atividade $model)
+    private function pertenceAoUsuaio(User $user, $model)
     {
         $current = $user->id === $model->user_id;
         $admin = Auth::user()->hasRole('admin');
