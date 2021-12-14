@@ -20,9 +20,10 @@ class AtividadePolicy extends BasePolicy
     private function pertenceAoUsuaio(User $user, $model)
     {
         $current = $user->id === $model->user_id;
+        $co_current = $user->id === $model->co_autor_id;
         $admin = Auth::user()->hasRole('admin');
 
-        return ($current || $admin) && $this->checkPermission($user, $model, 'edit');
+        return ($current || $admin || $co_current) && $this->checkPermission($user, $model, 'edit');
     }
 
     /**
