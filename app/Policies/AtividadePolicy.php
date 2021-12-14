@@ -40,7 +40,7 @@ class AtividadePolicy extends BasePolicy
     }
 
     /**
-     * Determina se a atividade pode ser editada pelo usuáio
+     * Determina se a atividade pode ser deletada pelo usuáio
      *
      * @param \TCG\Voyager\Contracts\User $user
      * @param  $model
