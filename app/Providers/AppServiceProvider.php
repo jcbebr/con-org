@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Voyager::addAction(\App\Actions\AvaliacaoAtividadeAction::class);
         Voyager::addAction(\App\Actions\AvaliacaoAtividadeVoltarAction::class);
+        Voyager::addAction(\App\Actions\RoteiroAtividadeAction::class);
+        Voyager::addAction(\App\Actions\RoteiroAtividadeVoltarAction::class);
         Voyager::replaceAction(\TCG\Voyager\Actions\ViewAction::class, \App\Actions\VerAction::class);
         Voyager::replaceAction(\TCG\Voyager\Actions\EditAction::class, \App\Actions\EditarAction::class);
 

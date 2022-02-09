@@ -25,6 +25,7 @@ Route::group(['middleware' => 'admin.user'], function () {
     Route::get('painel', ['uses' => 'App\Http\Controllers\PainelController@index', 'as' => 'index']);
 
     Route::resource('atividade/{atividade_id}/avaliacao', 'App\Http\Controllers\AvaliacaoAtividadeController', ['parameters' => ['avaliacao' => 'id' , 'atividade_id' => 'av_id']]);
+    Route::resource('roteiro/{roteiro_id}/roteiro-atividade', 'App\Http\Controllers\RoteiroAtividadeController', ['parameters' => ['roteiro-atividade' => 'id' , 'roteiro_id' => 'roteiro_id']]);
 });
 
 Route::prefix('google')->name('google.')->group( function(){
